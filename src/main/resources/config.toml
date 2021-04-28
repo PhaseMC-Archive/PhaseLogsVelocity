@@ -1,0 +1,16 @@
+"logLevel" = "INFO"
+# There are 4 placeholders
+# {SERVER} = Server where the message was sent from
+# {PREFIX} = The prefix of the user
+# {USERNAME} = The name of the user
+# {MESSAGE} = The message sent by the user
+"botOutput" = "**[{SERVER}]** {PREFIX} {USERNAME}: {MESSAGE}"
+"token" = ""
+
+"activity" = {"name" = "Minecraft Chat", "type" = "watching"}
+
+# If the bot will only be in 1 guild, you don't need to set guild id (It will choose first guild if left at 0)
+"guild" = 0
+"logChannel" = 0
+# The message buffer rate is the rate in which the bot checks and sends out chat messages to discord (don't make it too low or discord may rate limit you)
+"messageBufferRate" = "1m"
