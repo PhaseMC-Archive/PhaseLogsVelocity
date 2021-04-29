@@ -38,7 +38,6 @@ public class PhaseLogs {
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
         server.getChannelRegistrar().register(MinecraftChannelIdentifier.create("logmessage", "sent"));
-        server.getChannelRegistrar().register(MinecraftChannelIdentifier.create("logmessage", "received"));
         server.getEventManager().register(this, new PluginMessageListener());
         server.getEventManager().register(this, new LeaveAndJoinListener());
 
