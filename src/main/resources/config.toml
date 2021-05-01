@@ -7,7 +7,7 @@
 "botOutput" = "**[{SERVER}]** {PREFIX} {USERNAME}: {MESSAGE}"
 "token" = ""
 
-"activity" = {"name" = "Minecraft Chat", "type" = "watching"}
+"activity" = {name = "Minecraft Chat", type = "watching"}
 
 # If the bot will only be in 1 guild, you don't need to set guild id (It will choose first guild if left at 0)
 "guild" = 0
