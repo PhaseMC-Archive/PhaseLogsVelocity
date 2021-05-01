@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
+import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import me.jordanplayz158.phaselogs.velocity.listeners.LeaveAndJoinListener;
@@ -13,14 +14,16 @@ import me.jordanplayz158.phaselogs.velocity.listeners.PluginMessageListener;
 import org.slf4j.Logger;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-@Plugin(id = "phaselogsvelocity", name = "Phase Logs Velocity", version = "0.0.1-SNAPSHOT",
+@Plugin(id = "phaselogs", name = "Phase Logs", version = "0.0.1-SNAPSHOT",
         url = "https://jordanplayz158.me", description = "Phase Logs for Velocity", authors = {"JordanPlayz158"})
 public class PhaseLogs {
     private final ProxyServer server;
     private final Logger logger;
+    private final Path dataDirectory;
 
     private static PhaseLogs instance;
     private FileConfig config;
@@ -28,9 +31,10 @@ public class PhaseLogs {
 
 
     @Inject
-    public PhaseLogs(ProxyServer server, Logger logger) {
+    public PhaseLogs(ProxyServer server, Logger logger, @DataDirectory Path dataDirectory) {
         this.server = server;
         this.logger = logger;
+        this.dataDirectory = dataDirectory;
 
         instance = this;
     }
@@ -41,7 +45,7 @@ public class PhaseLogs {
         server.getEventManager().register(this, new PluginMessageListener());
         server.getEventManager().register(this, new LeaveAndJoinListener());
 
-        File dataDirectory = new File("plugins/PhaseLogsVelocity");
+        File dataDirectory = this.dataDirectory.toFile();
 
         if (!dataDirectory.exists()) {
             dataDirectory.mkdir();
